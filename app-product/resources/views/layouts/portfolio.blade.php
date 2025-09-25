@@ -27,10 +27,17 @@
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <!-- Brand / Logo -->
-        <a class="navbar-brand" href="{{ route('portfolio.home') }}">Static Website</a>
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('portfolio.home') }}">
+            <img 
+                src="https://tse2.mm.bing.net/th/id/OIP.7aVd3iQa7niIEH19CHpYBwHaFS?rs=1&pid=ImgDetMain&o=7&rm=3" 
+                alt="Gels Coffee Logo" 
+                style="height: 40px; width: auto; border-radius: 6px; margin-right: 8px;"
+            >
+            Gels Coffee
+        </a>
 
         <!-- Toggler for mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -40,18 +47,16 @@
 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarNav">
-         <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-
-       
-
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
         </div>
     </div>
 </nav>
+
 
 
     <!-- Main Content -->

@@ -7,6 +7,7 @@
 <section id="hero" class="hero-section">
     <div class="container hero-container">
         <div class="hero-text">
+            
             <h1>{{ $portfolio['name'] }}</h1>
             <h3>{{ $portfolio['title'] }}</h3>
             <p>{{ $portfolio['bio'] }}</p>
@@ -35,57 +36,76 @@
 <!-- ABOUT SECTION -->
 <section id="about" class="section">
     <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="justified">{{ $portfolio['about'] }}</p>
 
-        <h3>Our Expertise</h3>
-@foreach ($portfolio['education'] as $item)
-    <div style="margin-bottom: 20px;">
-        <p class="justified"><strong>{{ $item['title'] }}</strong> — {{ $item['description'] }}</p>
-        <a href="{{ $item['link'] }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px;">
-            <img
-                src="{{ $item['image'] }}"
-                alt="{{ $item['title'] }}"
-                style="width: 150px; border-radius: 8px; object-fit: cover;"
-            >
-        </a>
-    </div>
-@endforeach
+        <!-- Intro Text -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">About</h2>
+                <p class="justified">{{ $portfolio['about'] }}</p>
+                <h3>Our Expertise</h3>
+            </div>
+        </div>
 
-
-
-        <h3>What We Do</h3>
-        <p class="justified">
-            @foreach ($portfolio['skills'] as $skill)
-                {{ $skill }}@if (!$loop->last), @endif
+        <!-- Image + Info Grid -->
+        <div class="row g-4">
+            @foreach ($portfolio['education'] as $item)
+                <div class="col-md-6 text-center">
+                    <a href="{{ $item['link'] }}" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="{{ $item['image'] }}"
+                            alt="{{ $item['title'] }}"
+                            style="width: 100%; height: 220px; border-radius: 8px; object-fit: cover; margin-bottom: 15px;"
+                        >
+                    </a>
+                    <p class="justified">
+                        <strong>{{ $item['title'] }}</strong><br>
+                        {{ $item['description'] }}
+                    </p>
+                </div>
             @endforeach
-        </p>
+        </div>
+
     </div>
 </section>
 
-<!-- PRODUCTS SECTION -->
-<section id="projects" class="section">
+
+<!-- TESTIMONIALS SECTION -->
+<section id="testimonials" class="section">
     <div class="container">
-        <h2 class="section-title">Our Products</h2>
-        @foreach ($portfolio['projects'] as $title => $project)
-            <p class="justified">
-                <strong>
-                    <a href="{{ $project['link'] }}" target="_blank" rel="noopener noreferrer">{{ $title }}</a>
-                </strong><br>
-                {{ $project['details'] }}
-            </p>
-        @endforeach
+        <h2 class="section-title">Testimonials</h2>
+        <div class="row g-4">
+            @foreach ($testimonials as $testimonial)
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm p-3">
+                        <p class="justified">"{{ $testimonial['quote'] }}"</p>
+                        <p class="text-end"><strong>— {{ $testimonial['author'] }}</strong></p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 </section>
 
-<!-- CONTACT SECTION -->
+
 <section id="contact" class="section">
     <div class="container">
         <h2 class="section-title">Contact Us</h2>
-        <p class="justified"><strong>Phone:</strong> {{ $portfolio['phone'] }}</p>
-        <p class="justified"><strong>Location:</strong> {{ $portfolio['location'] }}</p>
 
-        <div class="social-links">
+        <form action="{{ route('contact.send') }}" method="POST" class="contact-form">
+            @csrf
+            <div class="mb-3">
+                <input type="text" name="name" placeholder="Your Name" required class="form-input">
+            </div>
+            <div class="mb-3">
+                <input type="email" name="email" placeholder="Your Email" required class="form-input">
+            </div>
+            <div class="mb-3">
+                <textarea name="message" placeholder="Your Message" rows="5" required class="form-input"></textarea>
+            </div>
+            <button type="submit" class="btn-custom">Submit</button>
+        </form>
+
+        <div class="social-links mt-4 text-center">
             @foreach ($portfolio['social_links'] as $platform => $link)
                 @if ($platform === 'LinkedIn')
                     <a href="{{ $link }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
@@ -102,6 +122,7 @@
         </div>
     </div>
 </section>
+
 
 @endsection
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ContactController;
 
 // Default Laravel route
 
@@ -21,3 +22,5 @@ Route::get('/about', [PortfolioController::class, 'about'])->name('portfolio.abo
 Route::get('/projects', [PortfolioController::class, 'projects'])->name('portfolio.projects');
 
 Route::get('/contact', [PortfolioController::class, 'contact'])->name('portfolio.contact');
+
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

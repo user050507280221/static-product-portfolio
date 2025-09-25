@@ -382,3 +382,35 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; /* Prevent m
     line-height: 40px;
     text-align: center;
 }
+#testimonials {
+    background: linear-gradient(135deg, #000, #0f3d0f);
+    color: var(--text-light);
+    padding: 100px 20px;
+}
+.contact-form {
+    max-width: 600px;
+    margin: 40px auto 0;
+}
+
+.contact-form .form-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: var(--radius);
+    border: none;
+    background: #111;
+    color: var(--text-light);
+    font-size: 1rem;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-input::placeholder {
+    color: var(--text-muted);
+}
+
+.contact-form .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+    background: #222;
+}
